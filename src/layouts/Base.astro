@@ -1,0 +1,4 @@
+---
+const {title='ITKeepers',description='Managed IT with familiar engineers and shared expertise.'}=Astro.props;
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>{title}</title><meta name="description" content={description}><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/mobile.css"></head><body><header><a href="/"><img src="https://itkeepers.com/assets/logo-a_bk1Iyj.png" alt="ITKeepers"></a><nav><a href="/services/managed-it">Services</a><a href="/how-we-work">How we work</a><a href="/about">Our team</a><a class="btn" href="/contact">Talk to our team</a></nav></header><main><slot /></main><footer><img src="https://itkeepers.com/assets/logo-a_bk1Iyj.png" alt="ITKeepers"><p>Managed IT with familiar people and shared expertise.</p><nav><a href="/how-we-work">How we work</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></nav></footer></body></html>
