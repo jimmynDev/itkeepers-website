@@ -1,4 +1,75 @@
 ---
-const {title='ITKeepers',description='Managed IT with familiar engineers and shared expertise.'}=Astro.props;
+const {
+  title = 'ITKeepers | Your IT person is a team.',
+  description = 'Proactive managed IT, Microsoft cloud, cybersecurity, networking, backup and infrastructure engineering for businesses in Lebanon.'
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://itkeepers.com');
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'ITStore'],
+  name: 'ITKeepers',
+  url: 'https://itkeepers.com',
+  areaServed: {
+    '@type': 'Country',
+    name: 'Lebanon'
+  },
+  description,
+  knowsAbout: [
+    'Managed IT services',
+    'Microsoft 365',
+    'Microsoft Entra ID',
+    'Microsoft Intune',
+    'Cybersecurity',
+    'Network infrastructure',
+    'Backup and disaster recovery'
+  ]
+};
 ---
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>{title}</title><meta name="description" content={description}><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/mobile.css"></head><body><header><a href="/"><img src="https://itkeepers.com/assets/logo-a_bk1Iyj.png" alt="ITKeepers"></a><nav><a href="/services/managed-it">Services</a><a href="/how-we-work">How we work</a><a href="/about">Our team</a><a class="btn" href="/contact">Talk to our team</a></nav></header><main><slot /></main><footer><img src="https://itkeepers.com/assets/logo-a_bk1Iyj.png" alt="ITKeepers"><p>Managed IT with familiar people and shared expertise.</p><nav><a href="/how-we-work">How we work</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a></nav></footer></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ITKeepers" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/mobile.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/" aria-label="ITKeepers home">
+        <img src="https://itkeepers.com/assets/logo-a_bk1Iyj.png" alt="ITKeepers" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/services/managed-it">Services</a>
+        <a href="/how-we-work">How we work</a>
+        <a href="/about">Our team</a>
+        <a class="btn" href="/contact">Talk to our team</a>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <img src="https://itkeepers.com/assets/logo-a_bk1Iyj.png" alt="ITKeepers" />
+      <p>Managed IT with familiar people and shared expertise.</p>
+      <nav aria-label="Footer navigation">
+        <a href="/how-we-work">How we work</a> ·
+        <a href="/contact">Contact</a> ·
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </footer>
+  </body>
+</html>
