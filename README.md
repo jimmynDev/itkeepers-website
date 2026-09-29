@@ -12,17 +12,18 @@ npm run build
 
 Node.js **22.x** is the production runtime target.
 
-## Cloudflare Pages
+## Cloudflare deployment
 
-This repository is configured for Cloudflare Pages.
+The connected Cloudflare project uses the current **Workers Git build pipeline with static assets**.
 
 - Production branch: `main`
 - Build command: `npm run build`
-- Build output directory: `dist`
+- Deploy command: `npx wrangler deploy`
+- Astro output directory: `dist`
+- Static assets source: `./dist`
 - Node.js: `22.x`
-- Wrangler Pages output: `./dist`
 
-Cloudflare Pages should be connected to the GitHub repository `jimmynDev/itkeepers-website`. Once Git integration is enabled, every push to `main` should trigger a production build automatically.
+`wrangler.toml` declares `[assets] directory = "./dist"`, allowing Cloudflare's Git integration to deploy the prerendered Astro site after every push to `main`.
 
 ## Routes
 
